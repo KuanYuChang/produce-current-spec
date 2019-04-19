@@ -12,17 +12,17 @@ software:
   gcc: 5.4.0
   nv_driver: '410.73'
   cuda: '10.0'
+  env:
+    LD_LIBRARY_PATH: '/home/GENERAL_USER/.cuda/lib64:/home/GENERAL_USER/.cuda/extras/CUPTI/lib64:'
+    HOME: /home/GENERAL_USER
+    CUDA_VISIBLE_DEVICES: '0'
+    CUDA_DEVICE_ORDER: PCI_BUS_ID
+    PATH: /home/GENERAL_USER/env3/bin:/home/GENERAL_USER/bin:/home/GENERAL_USER/.local/bin:/home/GENERAL_USER/.cuda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+    LANG: en_US.UTF-8
+    SHELL: /bin/bash
+    VIRTUAL_ENV: /home/GENERAL_USER/env3
+    CUDA_HOME: /home/GENERAL_USER/.cuda
   python: 3.5.2
-env:
-  LD_LIBRARY_PATH: '/home/GENERAL_USER/.cuda/lib64:/home/GENERAL_USER/.cuda/extras/CUPTI/lib64:'
-  HOME: /home/GENERAL_USER
-  CUDA_VISIBLE_DEVICES: '0'
-  CUDA_DEVICE_ORDER: PCI_BUS_ID
-  PATH: /home/GENERAL_USER/env3/bin:/home/GENERAL_USER/bin:/home/GENERAL_USER/.local/bin:/home/GENERAL_USER/.cuda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
-  LANG: en_US.UTF-8
-  SHELL: /bin/bash
-  VIRTUAL_ENV: /home/GENERAL_USER/env3
-  CUDA_HOME: /home/GENERAL_USER/.cuda
-pip:
-  oyaml: '0.9'
-  PyYAML: '5.1'
+  pip:
+    oyaml: '0.9'
+    PyYAML: '5.1'
