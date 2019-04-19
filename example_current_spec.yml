@@ -1,4 +1,5 @@
 hardware:
+  board: ROG ZENITH EXTREME
   processor: AMD Ryzen Threadripper 2990WX 32-Core Processor
   graphics:
     '0': GeForce RTX 2080 Ti
@@ -23,8 +24,4 @@ env:
   CUDA_HOME: /home/GENERAL_USER/.cuda
 pip:
   oyaml: '0.9'
-  pip: 19.0.3
-  pkg-resources: 0.0.0
   PyYAML: '5.1'
-  setuptools: 41.0.0
-  wheel: 0.33.1
