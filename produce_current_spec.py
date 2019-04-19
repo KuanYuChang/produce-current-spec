@@ -1,4 +1,3 @@
-from get_env_spec import *
 from get_hw_spec import *
 from get_sw_spec import *
 
@@ -23,10 +22,9 @@ def main():
   current_section["gcc"] = get_gcc_release()
   current_section["nv_driver"] = get_nv_driver_release()
   current_section["cuda"] = get_cuda_release()
+  current_section["env"] = get_env_variables()
   current_section["python"] = get_python_release()
-
-  specification["env"] = get_env_variables()
-  specification["pip"] = get_pip_packages()
+  current_section["pip"] = get_pip_packages()
 
   with open('example_current_spec.yml', 'w') as yaml_file:
     yaml.dump(specification, yaml_file, default_flow_style=False)
