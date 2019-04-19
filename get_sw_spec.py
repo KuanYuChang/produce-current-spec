@@ -1,4 +1,4 @@
-from get_env_spec import get_command_output
+from base_func import get_command_output
 
 def get_kernel_release():
   command = "uname -r"

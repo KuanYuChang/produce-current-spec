@@ -1,4 +1,4 @@
-from get_env_spec import get_command_output
+from base_func import get_command_output
 import collections
 
 def get_board_name():

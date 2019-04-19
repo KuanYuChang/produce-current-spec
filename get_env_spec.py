@@ -1,12 +1,5 @@
-import subprocess
+from base_func import *
 import collections
-
-def get_command_output(com):
-  return subprocess.check_output(com, shell=True).strip().decode()
-
-def get_username():
-  command = "echo $USER"
-  return get_command_output(command)
 
 def get_env_variables():
   env_dict = collections.OrderedDict()
