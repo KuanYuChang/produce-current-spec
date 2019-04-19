@@ -8,6 +8,10 @@ def get_os_name():
   command = "grep PRETTY_NAME /etc/os-release | awk -F '=' '{print $2}' | tr -d '\"'"
   return get_command_output(command)
 
+def get_gcc_release():
+  command = "gcc --version | head -n1 | awk '{print $4}'"
+  return get_command_output(command)
+
 def get_nv_driver_release():
   command = "head -n1 /proc/driver/nvidia/version | awk '{print $8}'"
   return get_command_output(command)

@@ -9,6 +9,7 @@ hardware:
 software:
   kernel: 4.4.0-131-generic
   os: Ubuntu 16.04.5 LTS
+  gcc: 5.4.0
   nv_driver: '410.73'
   cuda: '10.0'
   python: 3.5.2

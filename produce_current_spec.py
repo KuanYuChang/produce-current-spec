@@ -20,6 +20,7 @@ def main():
   current_section = new_empty_section(specification, "software")
   current_section["kernel"] = get_kernel_release()
   current_section["os"] = get_os_name()
+  current_section["gcc"] = get_gcc_release()
   current_section["nv_driver"] = get_nv_driver_release()
   current_section["cuda"] = get_cuda_release()
   current_section["python"] = get_python_release()
