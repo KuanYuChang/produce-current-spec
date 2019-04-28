@@ -31,7 +31,7 @@ def get_cuda_release():
   base_command = "lsof -p " + str(pid) + " | awk '{print $9}'"
   command = base_command + " | grep " + prefix_cudart_so
   try:
-    return get_command_output(show_libcudart_command)[:-1].split("/")[-1]
+    return get_command_output(command).split("/")[-1].replace(prefix_cudart_so, "")
   except:
     return "N/A"
 
@@ -41,7 +41,7 @@ def get_cudnn_release():
   base_command = "lsof -p " + str(pid) + " | awk '{print $9}'"
   command = base_command + " | grep " + prefix_cudnn_so
   try:
-    return get_command_output(show_libcudnn_command)[:-1].split("/")[-1]
+    return get_command_output(command).split("/")[-1].replace(prefix_cudnn_so, "")
   except:
     return "N/A"
 
@@ -78,9 +78,9 @@ def main():
         "gcc": get_gcc_release(),
         "nv_driver": get_nv_driver_release(),
         "nvcc": get_nvcc_release(),
-        "env": get_env_variables(),
         "cuda": get_cuda_release(),
         "cudnn": get_cudnn_release(),
+        "env": get_env_variables(),
         "python": get_python_release(),
         "pip": get_pip_packages()
       }, indent=2
