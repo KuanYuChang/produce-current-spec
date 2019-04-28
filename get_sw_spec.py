@@ -17,7 +17,7 @@ def get_nv_driver_release():
   command = "head -n1 /proc/driver/nvidia/version | awk '{print $8}'"
   return get_command_output(command)
 
-def get_cuda_release():
+def get_nvcc_release():
   command = "nvcc --version | tail -n1 | awk '{print $5}' | tr -d ','"
   return get_command_output(command)
 
@@ -53,7 +53,7 @@ def main():
         "kernel": get_kernel_release(),
         "gcc": get_gcc_release(),
         "nv_driver": get_nv_driver_release(),
-        "cuda": get_cuda_release(),
+        "nvcc": get_nvcc_release(),
         "env": get_env_variables(),
         "python": get_python_release(),
         "pip": get_pip_packages()

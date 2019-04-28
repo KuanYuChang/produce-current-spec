@@ -21,7 +21,7 @@ def main():
   current_section["kernel"] = get_kernel_release()
   current_section["gcc"] = get_gcc_release()
   current_section["nv_driver"] = get_nv_driver_release()
-  current_section["cuda"] = get_cuda_release()
+  current_section["nvcc"] = get_nvcc_release()
   current_section["env"] = get_env_variables()
   current_section["python"] = get_python_release()
   current_section["pip"] = get_pip_packages()
