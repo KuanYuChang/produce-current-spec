@@ -25,25 +25,25 @@ def get_nvcc_release():
   command = "nvcc --version | tail -n1 | awk '{print $5}' | tr -d ','"
   return get_command_output(command)
 
-def get_cuda_release():
+def get_loaded_shared_objects():
   pid = get_pid()
-  prefix_cudart_so = "libcudart.so."
   base_command = "lsof -p " + str(pid) + " | awk '{print $9}'"
-  command = base_command + " | grep " + prefix_cudart_so + " | awk -F '/' '{print $NF}'"
-  try:
-    return get_command_output(command).replace(prefix_cudart_so, "")
-  except:
-    return "N/A"
+  command = base_command +  " | grep .so | awk -F '/' '{print $NF}'"
+  return get_command_output(command).split("\n")
+
+def get_cuda_release():
+  prefix_cudart_so = "libcudart.so."
+  for so in get_loaded_shared_objects():
+    if prefix_cudart_so in so:
+      return so.replace(prefix_cudart_so, "")
+  return "N/A"
 
 def get_cudnn_release():
-  pid = get_pid()
   prefix_cudnn_so = "libcudnn.so."
-  base_command = "lsof -p " + str(pid) + " | awk '{print $9}'"
-  command = base_command + " | grep " + prefix_cudnn_so + " | awk -F '/' '{print $NF}'"
-  try:
-    return get_command_output(command).replace(prefix_cudnn_so, "")
-  except:
-    return "N/A"
+  for so in get_loaded_shared_objects():
+    if prefix_cudnn_so in so:
+      return so.replace(prefix_cudnn_so, "")
+  return "N/A"
 
 def get_env_variables():
   env_dict = dict()
@@ -80,6 +80,7 @@ def main():
         "nvcc": get_nvcc_release(),
         "cuda": get_cuda_release(),
         "cudnn": get_cudnn_release(),
+        "loaded_so": get_loaded_shared_objects(),
         "env": get_env_variables(),
         "python": get_python_release(),
         "pip": get_pip_packages()
