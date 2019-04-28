@@ -2,8 +2,8 @@ from base_func import get_command_output
 from base_func import get_username
 
 def get_pid():
-  import os
-  return os.getpid()
+  from os import getpid
+  return getpid()
 
 def get_os_name():
   command = "grep PRETTY_NAME /etc/os-release | awk -F '=' '{print $2}' | tr -d '\"'"
