@@ -11,7 +11,7 @@ software:
   kernel: 4.4.0-131-generic
   gcc: 5.4.0
   nv_driver: '410.73'
-  cuda: '10.0'
+  nvcc: '10.0'
   env:
     LD_LIBRARY_PATH: '/home/GENERAL_USER/.cuda/lib64:/home/GENERAL_USER/.cuda/extras/CUPTI/lib64:'
     CUDA_VISIBLE_DEVICES: '0'
