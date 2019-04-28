@@ -97,14 +97,12 @@ software:
     HOME: /home/GENERAL_USER
     QT_QPA_PLATFORMTHEME: appmenu-qt5
     CUDA_VISIBLE_DEVICES: '0'
-    COLUMNS: '181'
     CUDA_DEVICE_ORDER: PCI_BUS_ID
     PATH: /home/GENERAL_USER/py36/bin:/home/GENERAL_USER/bin:/home/GENERAL_USER/.local/bin:/home/GENERAL_USER/.cuda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
     LANG: en_US.UTF-8
     SHELL: /bin/bash
     VIRTUAL_ENV: /home/GENERAL_USER/py36
     CUDA_HOME: /home/GENERAL_USER/.cuda
-    LINES: '56'
   python: 3.6.7
   pip:
     absl-py: 0.7.1

@@ -50,7 +50,9 @@ def get_env_variables():
   username = get_username()
   base_command = "TERMCAP='' env"
   command = base_command + " | grep -v '_='"
-  exclude_env_vars = ["XDG", "TERM", "SSH", "LS_COLORS", "MAIL", "PWD", "PS1", "SHLVL", "LESS", "USER", "LOGNAME", "STY", "WINDOW"]
+  exclude_env_vars = ["XDG", "TERM", "SSH", "LS_COLORS", "MAIL", "PWD", "PS1",
+                      "SHLVL", "LESS", "USER", "LOGNAME", "STY", "WINDOW",
+                      "COLUMNS", "LINES"]
   for ex_v in exclude_env_vars:
     command += ( " | grep -v " + ex_v )
   for l in get_command_output(command).split("\n"):
