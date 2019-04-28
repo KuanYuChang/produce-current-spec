@@ -1,6 +1,10 @@
 from base_func import get_command_output
 from base_func import get_username
 
+def get_pid():
+  import os
+  return os.getpid()
+
 def get_os_name():
   command = "grep PRETTY_NAME /etc/os-release | awk -F '=' '{print $2}' | tr -d '\"'"
   return get_command_output(command)
@@ -20,6 +24,26 @@ def get_nv_driver_release():
 def get_nvcc_release():
   command = "nvcc --version | tail -n1 | awk '{print $5}' | tr -d ','"
   return get_command_output(command)
+
+def get_cuda_release():
+  pid = get_pid()
+  prefix_cudart_so = "libcudart.so."
+  base_command = "lsof -p " + str(pid) + " | awk '{print $9}'"
+  command = base_command + " | grep " + prefix_cudart_so
+  try:
+    return get_command_output(show_libcudart_command)[:-1].split("/")[-1]
+  except:
+    return "N/A"
+
+def get_cudnn_release():
+  pid = get_pid()
+  prefix_cudnn_so = "libcudnn.so."
+  base_command = "lsof -p " + str(pid) + " | awk '{print $9}'"
+  command = base_command + " | grep " + prefix_cudnn_so
+  try:
+    return get_command_output(show_libcudnn_command)[:-1].split("/")[-1]
+  except:
+    return "N/A"
 
 def get_env_variables():
   env_dict = dict()
@@ -55,6 +79,8 @@ def main():
         "nv_driver": get_nv_driver_release(),
         "nvcc": get_nvcc_release(),
         "env": get_env_variables(),
+        "cuda": get_cuda_release(),
+        "cudnn": get_cudnn_release(),
         "python": get_python_release(),
         "pip": get_pip_packages()
       }, indent=2
