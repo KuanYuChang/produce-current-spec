@@ -29,9 +29,9 @@ def get_cuda_release():
   pid = get_pid()
   prefix_cudart_so = "libcudart.so."
   base_command = "lsof -p " + str(pid) + " | awk '{print $9}'"
-  command = base_command + " | grep " + prefix_cudart_so
+  command = base_command + " | grep " + prefix_cudart_so + " | awk -F '/' '{print $NF}'"
   try:
-    return get_command_output(command).split("/")[-1].replace(prefix_cudart_so, "")
+    return get_command_output(command).replace(prefix_cudart_so, "")
   except:
     return "N/A"
 
@@ -39,9 +39,9 @@ def get_cudnn_release():
   pid = get_pid()
   prefix_cudnn_so = "libcudnn.so."
   base_command = "lsof -p " + str(pid) + " | awk '{print $9}'"
-  command = base_command + " | grep " + prefix_cudnn_so
+  command = base_command + " | grep " + prefix_cudnn_so + " | awk -F '/' '{print $NF}'"
   try:
-    return get_command_output(command).split("/")[-1].replace(prefix_cudnn_so, "")
+    return get_command_output(command).replace(prefix_cudnn_so, "")
   except:
     return "N/A"
 
